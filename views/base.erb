@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>iFrame Widget Test: Base</title>
+  <script src="/jquery.min.js"></script>
+</head>
+<body>
+  <p>Token: <%= @token %></p>
+  <iframe name="iframe-test" border="1px"></iframe>
+  <iframe name="iframe-control" border="1px" src="http://iframe-widget-test-base:9393/iframe-control"></iframe>
+  <form id="iframe-form" target="iframe-test" action="http://iframe-widget-test-frame:9393/iframe" method="POST">
+    <input type="hidden" value="<%= @token %>" name="token">
+  </form>
+  <p id="title-test"></p>
+  <p id="title-control"></p>
+  <script>
+    $(function () {
+      $("#iframe-form").submit();
+      setTimeout(function () {
+        var title_test, title_control;
+
+        try {
+          title_test = window.frames[0].document.title;
+        } catch (err) {
+          title_test = "No Access!"
+        }
+
+        try {
+          title_control = window.frames[1].document.title;
+        } catch (err) {
+          title_control = "No Access!"
+        }
+
+        $("#title-test").text(title_test);
+        $("#title-control").text(title_control);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

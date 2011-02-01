@@ -1,0 +1,31 @@
+This is a proof-of-concept for using the post-to-iframe method of setting
+cookies for x-domain iframe requests. Facebook uses this method for iframe
+canvas page apps.
+
+See the images in screenshots/ to see how this works in browesrs.
+
+Basically what happens is we request a page on the iframe-widget-test-base
+domain which generates a random token. Then with JS on page load, we submit
+a form that has the iframe as the target. The form action url is, of course,
+a separate domain: iframe-widget-test-frame. In that request to the frame we
+set a cookie in the response to the randomly generated token. We then use JS in
+that frame to show that the cookie is indeed set for the frame's domain. As
+a control, we load another iframe (on the right in the pictures) with a normal
+GET request (iframe's src attribtue) on the same domain as the base page
+(iframe-widget-test-base) to show that no cookie gets set for the base page.
+Finally, to show that the x-domain iframe is indeed isolated, we try to use JS
+in the base page to access the title of the frame. In the x-domain iframe, we
+cannot access the title (browser security enforces that JS cannot communicate
+between frames with different domains). In the same-domain iframe, we can
+access the title.
+
+To run this yourself...
+
+This test requires two entries in /etc/hosts; e.g.:
+
+iframe-widget-test-base
+iframe-widget-test-frame
+
+Run with shotgun: `bundle exec shotgun`.
+
+Navigate to http://iframe-widget-test-base:9393/ in your browser.
