@@ -4,8 +4,30 @@
   <meta charset="utf-8">
   <title>iFrame Widget Test: iFrame</title>
   <script src="/jquery.min.js"></script>
+  <script>
+    window.doAjaxAgain = function () {
+      $.get("/ajax", function (data) {
+        $('body').append('<p> second '+data+'</p>');
+      });
+    };
+    $(function () {
+      $.get("/ajax", function (data) {
+        $('body').append('<p> first '+data+'</p>');
+      });
+
+      $('#do_popup').on('click', function () {
+        window.open(
+          '/popup',
+          'popup',
+          "height=1,width=1,left=100000,top=0,location=0,menubar=0,resizable=0,scrollbars=0,status=0,titlebar=0,toolbar=0"
+        );
+        return false;
+      });
+    });
+  </script>
 </head>
 <body>
+  <a href="#" id="do_popup">popup</a>
   <p>Token: <%= @token %></p>
   <p>
     Cookie:

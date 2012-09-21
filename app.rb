@@ -25,4 +25,13 @@ class App < Sinatra::Base
   get '/iframe-control' do
     erb :frame_control
   end
+
+  get '/ajax' do
+    request.cookies['COOKIE']
+  end
+
+  get '/popup' do
+    response.set_cookie('COOKIE', 'foo')
+    erb :popup
+  end
 end
