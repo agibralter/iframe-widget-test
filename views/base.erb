@@ -2,40 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>iFrame Widget Test: Base</title>
-  <script src="/jquery.min.js"></script>
+  <title>iframe widget test</title>
+  <script src="/jquery.js"></script>
+  <script src="/underscore.js"></script>
+  <script src="/app.js"></script>
+  <style>
+    body {
+      font-size: 0.75em;
+    }
+    .container {
+      float: left;
+      margin: 20px;
+    }
+    iframe {
+      width: 300px;
+      height: 400px;
+      float: left;
+      clear: both;
+    }
+  </style>
 </head>
 <body>
-  <p>Token: <%= @token %></p>
-  <iframe name="iframe-test" border="1px"></iframe>
-  <iframe name="iframe-control" border="1px" src="http://iframe-widget-test-base:9393/iframe-control"></iframe>
-  <form id="iframe-form" target="iframe-test" action="http://iframe-widget-test-frame:9393/iframe" method="POST">
+
+  <h1>iframe widget test</h1>
+  <h2>random token:</h2>
+  <p id="token"><%= @token %></p>
+
+  <div class="container">
+    <h2>x-domain iframe loaded via GET request</h2>
+    <iframe
+      name="iframe-get"
+      border="1px"
+      src="http://iframe-widget-test-1:9393/iframe-xdomain?token=<%= @token %>"
+      data-next="http://iframe-widget-test-1:9393/iframe-xdomain2"
+    ></iframe>
+  </div>
+
+  <div class="container">
+    <h2>x-domain iframe loaded via POST request</h2>
+    <iframe
+      name="iframe-post"
+      border="1px"
+      data-next="http://iframe-widget-test-2:9393/iframe-xdomain2"
+    ></iframe>
+  </div>
+
+  <div class="container">
+    <h2>x-domain dynamically created iframe loaded via GET request</h2>
+    <div id="dyn-get"></div>
+  </div>
+
+  <div class="container">
+    <h2>x-domain dynamically created iframe loaded via POST request</h2>
+    <div id="dyn-post"></div>
+  </div>
+
+  <form
+    id="form"
+    target="iframe-post"
+    action="http://iframe-widget-test-2:9393/iframe-xdomain"
+    method="POST"
+  >
     <input type="hidden" value="<%= @token %>" name="token">
   </form>
-  <p id="title-test"></p>
-  <p id="title-control"></p>
-  <script>
-    $(function () {
-      $("#iframe-form").submit();
-      setTimeout(function () {
-        var title_test, title_control;
-
-        try {
-          title_test = window.frames[0].document.title;
-        } catch (err) {
-          title_test = "No Access!"
-        }
-
-        try {
-          title_control = window.frames[1].document.title;
-        } catch (err) {
-          title_control = "No Access!"
-        }
-
-        $("#title-test").text(title_test);
-        $("#title-control").text(title_control);
-      }, 1000);
-    });
-  </script>
 </body>
 </html>

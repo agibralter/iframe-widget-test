@@ -2,20 +2,23 @@ GEM
   remote: http://rubygems.org/
   specs:
     columnize (0.3.6)
-    debugger (1.2.0)
+    debugger (1.2.3)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.1.1)
-      debugger-ruby_core_source (~> 1.1.3)
+      debugger-ruby_core_source (~> 1.1.5)
     debugger-linecache (1.1.2)
       debugger-ruby_core_source (>= 1.1.1)
-    debugger-ruby_core_source (1.1.3)
-    rack (1.2.1)
-    shotgun (0.8)
+    debugger-ruby_core_source (1.1.6)
+    rack (1.4.4)
+    rack-protection (1.3.2)
+      rack
+    shotgun (0.9)
       rack (>= 1.0)
-    sinatra (1.1.2)
-      rack (~> 1.1)
-      tilt (~> 1.2)
-    tilt (1.2.2)
+    sinatra (1.3.3)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    tilt (1.3.3)
 
 PLATFORMS
   ruby

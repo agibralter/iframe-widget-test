@@ -10,20 +10,41 @@ class App < Sinatra::Base
   helpers do
   end
 
-  get '/base' do
+  get '/' do
     @token = "test-#{rand(1000)}"
     erb :base
   end
 
-  post '/iframe' do
+  get '/iframe-xdomain' do
     @token = params['token']
     response.set_cookie('COOKIE', @token)
     headers('P3P' => 'CP="DSP LAW"')
     erb :frame
   end
 
-  get '/iframe-control' do
-    erb :frame_control
+  post '/iframe-xdomain' do
+    @token = params['token']
+    response.set_cookie('COOKIE', @token)
+    headers('P3P' => 'CP="DSP LAW"')
+    erb :frame
+  end
+
+  get '/iframe-xdomain2' do
+    @token = params['token']
+    response.set_cookie('COOKIE', @token)
+    headers('P3P' => 'CP="DSP LAW"')
+    erb :frame2
+  end
+
+  post '/iframe-xdomain2' do
+    @token = params['token']
+    response.set_cookie('COOKIE', @token)
+    headers('P3P' => 'CP="DSP LAW"')
+    erb :frame2
+  end
+
+  get '/ajax' do
+    "request cookies: #{request.cookies.inspect}"
   end
 
   get '/ajax' do

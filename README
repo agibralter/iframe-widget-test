@@ -21,11 +21,23 @@ access the title.
 
 To run this yourself...
 
-This test requires two entries in /etc/hosts; e.g.:
+This test requires entries in /etc/hosts; e.g.:
 
-iframe-widget-test-base
-iframe-widget-test-frame
+    127.0.0.1 iframe-widget-test-base iframe-widget-test-1 iframe-widget-test-2 iframe-widget-test-3 iframe-widget-test-4
 
 Run with shotgun: `bundle exec shotgun`.
 
 Navigate to http://iframe-widget-test-base:9393/ in your browser.
+
+Currently the post-to-iframe technique works in:
+- FF3+
+- IE6+
+- Chrome (every version I've tried...)
+- Opera (9+ I think...)
+- Safari (before v6)
+- mobile Safari (before iOS v6)
+
+Safari 6+ and mobile Safari in iOS 6+ threw a wrench in the whole technique
+though. It looks like localStorage works in cross-domain iframes, though, so
+that may provide a work around for the future (requires application
+rearchitecting).
