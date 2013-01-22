@@ -41,3 +41,6 @@ Safari 6+ and mobile Safari in iOS 6+ threw a wrench in the whole technique
 though. It looks like localStorage works in cross-domain iframes, though, so
 that may provide a work around for the future (requires application
 rearchitecting).
+
+Chrome with "block third party cookies and site data" does not even allow
+localStorage.

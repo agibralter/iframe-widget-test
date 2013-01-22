@@ -7,6 +7,8 @@ class App < Sinatra::Base
     require 'ruby-debug'
   end
 
+  set :protection, :except => :frame_options
+
   helpers do
   end
 
