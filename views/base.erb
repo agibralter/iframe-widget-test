@@ -33,8 +33,8 @@
     <iframe
       name="iframe-get"
       border="1px"
-      src="http://iframe-widget-test-1:9393/iframe-xdomain?token=<%= @token %>"
-      data-next="http://iframe-widget-test-1:9393/iframe-xdomain2"
+      src="http://iframe-widget-test-1.urtak.is/iframe-xdomain?token=<%= @token %>"
+      data-next="http://iframe-widget-test-1.urtak.is/iframe-xdomain2"
     ></iframe>
   </div>
 
@@ -43,7 +43,7 @@
     <iframe
       name="iframe-post"
       border="1px"
-      data-next="http://iframe-widget-test-2:9393/iframe-xdomain2"
+      data-next="http://iframe-widget-test-2.urtak.is/iframe-xdomain2"
     ></iframe>
   </div>
 
@@ -60,7 +60,7 @@
   <form
     id="form"
     target="iframe-post"
-    action="http://iframe-widget-test-2:9393/iframe-xdomain"
+    action="http://iframe-widget-test-2.urtak.is/iframe-xdomain"
     method="POST"
   >
     <input type="hidden" value="<%= @token %>" name="token">

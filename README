@@ -23,11 +23,18 @@ To run this yourself...
 
 This test requires entries in /etc/hosts; e.g.:
 
-    127.0.0.1 iframe-widget-test-base iframe-widget-test-1 iframe-widget-test-2 iframe-widget-test-3 iframe-widget-test-4
+    127.0.0.1 iframe-widget-test-base.urtak.com
+    127.0.0.1 iframe-widget-test-1.urtak.is
+    127.0.0.1 iframe-widget-test-2.urtak.is
+    127.0.0.1 iframe-widget-test-3.urtak.is
+    127.0.0.1 iframe-widget-test-4.urtak.is
 
 Run with shotgun: `bundle exec shotgun`.
 
-Navigate to http://iframe-widget-test-base:9393/ in your browser.
+**Also, somehow, you'll need to forward requests to port 80 to 9393 (for use
+with shotgun).**
+
+Navigate to http://iframe-widget-test-base.urtak.is/ in your browser.
 
 Currently the post-to-iframe technique works in:
 - FF3+

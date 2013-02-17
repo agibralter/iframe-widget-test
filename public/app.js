@@ -6,7 +6,7 @@ $(function () {
   dyn_form_html = "<form " + _.inject({
     id:     "form-dyn",
     target: "iframe-dyn-post",
-    action: "http://iframe-widget-test-3:9393/iframe-xdomain",
+    action: "http://iframe-widget-test-3.urtak.is/iframe-xdomain",
     method: "POST"
   }, function (memo, v, k) {
     return memo.concat([k + "=\"" + v + "\""]);
@@ -18,14 +18,14 @@ $(function () {
   dyn_form = $(dyn_form_html);
   dyn_iframe_post = $("<iframe>", {
     name:        "iframe-dyn-post",
-    "data-next": "http://iframe-widget-test-3:9393/iframe-xdomain2",
+    "data-next": "http://iframe-widget-test-3.urtak.is/iframe-xdomain2",
     border:      "1px"
   });
   dyn_iframe_get = $("<iframe>", {
     name:        "iframe-dyn-get",
-    "data-next": "http://iframe-widget-test-4:9393/iframe-xdomain2",
+    "data-next": "http://iframe-widget-test-4.urtak.is/iframe-xdomain2",
     border:      "1px",
-    src:         "http://iframe-widget-test-4:9393/iframe-xdomain?token=" + token
+    src:         "http://iframe-widget-test-4.urtak.is/iframe-xdomain?token=" + token
   });
 
   $("body").append(dyn_form);
